@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Ubuntu+Mono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    background: #041C32;
+    color: #fff;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.app {
+    width: 320px;
+    /* min-height: 500px; */
+    background: #064663;
+    padding: 2rem 2rem;
+    position: relative;
+    border-radius: 5px;
+    margin: 2rem;
+}
+
+.app.flex {
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.app .main-heading {
+    text-transform: uppercase;
+    color: hsl(199, 84%, 63%);
+    letter-spacing: 1.2px;
+}
+
+.output-content {
+    width: 100%;
+    margin: 1rem;
+    /* overflow-x: scroll; */
+    background: hsl(199, 44%, 41%);
+    position: relative;
+    padding: 1rem 2rem;
+    margin-top: 3rem;
+}
+
+.output-heading {
+    position: absolute;
+    top: -14px;
+    left: 0;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: hsl(199, 56%, 44%);
+}
+
+.output-content p {
+    font-weight: 500;
+}
+
+/* .password-output:focus {
+    background: rgba(39, 39, 39, 0.151);
+} */
+
+.password-output {
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+.output-content span {
+    font-size: 14px;
+    position: absolute;
+    color: rgba(0, 0, 0, 0.397);
+}
+
+.copied {
+    visibility: hidden;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:hsl(199, 44%, 41%);
+    backdrop-filter: blur(5px);
+    font-size: 14px !important;
+    transition: all .3s linear;
+}
+
+.copied.active {
+    transition: all .2s ease-out;
+    visibility: visible;
+    font-size: 18px !important;
+    background:hsl(199, 44%, 41%);
+    color: rgba(255, 255, 255, 0.712) !important;
+}
+
+.output-content .copy-icon {
+    top: 3px;
+    right: 5px;
+}
+
+.output-content .generate-icon {
+    bottom: 3px;
+    right: 5px;
+    transition: rotate 0.2s ease-in-out;
+}
+
+.output-content .generate-icon:active{
+    transform: rotate(180deg)
+}
+
+
+.output-content span:hover {
+    color: rgba(255, 255, 255, 0.644);
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.settings {
+    width: 100%;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.settings .length input{
+    width: 78%;
+}
+
+.range-input {
+    display: inline-block;
+    align-items: center;
+    background: hsl(199, 44%, 41%);
+    color: hsl(0, 0%, 100%);
+    width: 1.5rem;
+    height: 1.3rem;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.settings input[type=checkbox] {
+    transform: scale(1.8);
+    margin-right: .5rem;
+}
+
+.generate-button button {
+    border: none; 
+    padding: .9rem 1.5rem;
+    cursor: pointer;
+    background: #041C32;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1.1px;
+    transition: all .2s;
+}
+
+.generate-button button:hover {
+    background: #093761;
+}
+
+.generate-button button:active {
+    transform: translateY(1px);
+}

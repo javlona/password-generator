@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container flex">
+        <div class="app flex">
+            <p class="main-heading">Password Generator</p>
+            <div class="output-content">
+                <p class="output-heading">Generated Password</p>
+                <div class="output">
+                    <span class="copied" id="copied">copied</span>
+                    <span class="copy-icon"><i class="far fa-copy"></i></span>
+                    <span class="generate-icon"><i class="fas fa-sync-alt"></i></span>
+                    <p contenteditable="true" class="password-output" id="passwordOutput">Aaskldohfoi907987f6ejg</p>
+                </div>
+            </div>
+            <div class="settings">
+                <div class="length">
+                    <input type="range" id="rangeSlider" min="6" max="32" autocomplete="off" value="6">
+                    <span title="length of password" id="rangInput" class="range-input">6</span>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="addNumbers">
+                    <label for="addNumbers">Numbers</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="addSymbols">
+                    <label for="addSymbols">Symbols</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="addUppercase">
+                    <label for="addUppercase">Uppercase</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="addLowercase">
+                    <label for="addLowercase">Lowercase</label>
+                </div>
+            </div>
+            <div class="generate-button">
+                <button type="button" id="generateButton">GENERATE PASSWORD</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>
