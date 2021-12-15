@@ -8,7 +8,7 @@
 }
 
 body {
-    background: #041C32;
+    background: hsl(209, 85%, 11%);
     color: #fff;
     font-family: 'Ubuntu', sans-serif;
 }
@@ -94,7 +94,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background:hsl(199, 44%, 41%);
+    background: hsl(199, 44%, 41%);
     backdrop-filter: blur(5px);
     font-size: 14px !important;
     transition: all .3s linear;
@@ -104,7 +104,7 @@ body {
     transition: all .2s ease-out;
     visibility: visible;
     font-size: 18px !important;
-    background:hsl(199, 44%, 41%);
+    background: hsl(199, 44%, 41%);
     color: rgba(255, 255, 255, 0.712) !important;
 }
 
@@ -119,7 +119,7 @@ body {
     transition: rotate 0.2s ease-in-out;
 }
 
-.output-content .generate-icon:active{
+.output-content .generate-icon:active {
     transform: rotate(180deg)
 }
 
@@ -139,7 +139,7 @@ body {
     gap: 1rem;
 }
 
-.settings .length input{
+.settings .length input {
     width: 78%;
 }
 
@@ -156,11 +156,11 @@ body {
 
 .settings input[type=checkbox] {
     transform: scale(1.8);
-    margin-right: .5rem;
+    margin: 0 .5rem;
 }
 
 .generate-button button {
-    border: none; 
+    border: none;
     padding: .9rem 1.5rem;
     cursor: pointer;
     background: #041C32;
