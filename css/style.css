@@ -5,7 +5,9 @@
     padding: 0;
     box-sizing: border-box;
     outline: none;
+    touch-action: manipulation;
 }
+
 
 body {
     background: hsl(209, 85%, 11%);
