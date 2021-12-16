@@ -28,7 +28,7 @@ copyIcon.addEventListener('click', () => {
 
     // copy password to the clipboard
     navigator.clipboard.writeText(passwordOutput.innerText)
-    
+
     // play sound
     copiedSound.play()
 })
@@ -53,7 +53,7 @@ class Random {
     }
 
     static symbols() {
-        const chars = "!@#$%^&*()_+-={}?.,<>:;'`"
+        const chars = "!@#$%^&*()_+-={}?.,~|>:;'`["
         return chars[Math.floor(cryptoRandomNum() * chars.length)]
     }
 }
