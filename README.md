@@ -4,4 +4,4 @@ Math.random is not used. Instead, crypto.getRandomValues is used which gives unb
 
 ## Links
 
-**Demo**: [password generator](https://javlona.github.io/password-generator/)
+* **Demo:** [password generator](https://javlona.github.io/password-generator/)
