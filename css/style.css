@@ -77,6 +77,8 @@ body {
 
 .password-output {
     font-family: 'Ubuntu Mono', monospace;
+    word-break: break-all;
+    text-align: center;
 }
 
 .output-content span {

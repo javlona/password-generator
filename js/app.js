@@ -4,29 +4,29 @@ const generateIcon = document.querySelector('.generate-icon')
 const copied = document.querySelector('.copied')
 const copiedSound = new Audio('/sound/copied-sound.m4a')
 const passwordOutput = document.querySelector('#passwordOutput')
-const generateButton = document.querySelector('#generateButton')
+const generateBtn = document.querySelector('#generateButton')
 const addNumbers = document.querySelector('#addNumbers')
-const addSymbol = document.querySelector('#addSymbol')
+const addSymbols = document.querySelector('#addSymbols')
 const addUppercase = document.querySelector('#addUppercase')
 const addLowercase = document.querySelector('#addLowercase')
-
-let passwordLength = 6;
-let generatedPassword;
 
 // show live range slider numbers on DOM
 window.addEventListener('input', () => {
     let rangeSlider = document.getElementById('rangeSlider');
     rangInput.innerHTML = rangeSlider.value
-    passwordOutput.value.length = rangeSlider.value
 })
 
 // play copy sound and show copied
 copyIcon.addEventListener('click', () => {
+    if(passwordOutput.innerHTML.trim() === "") return;
+
     copied.classList.add('active')
-    // remove class after 1s
+    // remove class after 1sec
     setTimeout(() => {
         copied.classList.remove('active')
     }, 1000)
+
+    navigator.clipboard.writeText(passwordOutput.innerText)
     copiedSound.play()
 })
 
@@ -49,10 +49,72 @@ class Random {
         return String.fromCharCode(Math.floor(cryptoRandomNum() * 10) + 48)
     }
 
-    static symbol(){
-        const symbols = "!@#$%^&*()_+-={}?.,<>:;'"
-        symbols[Math.floor(cryptoRandomNum() * symbols.length)]
+    static symbols(){
+        const chars = "!@#$%^&*()_+-={}?.,<>:;'`"
+        return chars[Math.floor(cryptoRandomNum() * chars.length)]
     }
 }
 
+function genPassFinal(){
+    const passwordLength = rangeSlider.value;
+    const lower = addLowercase.checked;
+    const upper = addUppercase.checked;
+    const symbols = addSymbols.checked;
+    const numbers = addNumbers.checked;
+    //console.log(passwordLength, lower, upper, symbols, numbers);
+    passwordOutput.innerHTML = generatePassword(passwordLength, lower, upper, symbols, numbers)
+}
 
+// Fisher-Yates array shuffle algorithm
+function shuffleArray(arr) {
+    let currentIndex = arr.length,  randomIndex;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [arr[currentIndex], arr[randomIndex]] = [arr[randomIndex], arr[currentIndex]];
+  }
+
+  return arr;
+}
+
+// main function that generates password
+function generatePassword(len, lower, upper, symbols, numbers) {
+    
+    let password = []
+
+    //check what checkboxes are true and get them in an array
+    let types = [{lower}, {upper}, {symbols}, {numbers}].filter(val => Object.values(val)[0])
+
+    for(let i = 0; i < len; i++) {
+        types.forEach(key => {
+            let func = Object.keys(key)[0]
+            password.push(Random[func]())
+        })
+    }
+
+    shuffleArray(password)
+
+    //let startCut = Math.floor(cryptoRandomNum() * (password.length - len))
+    return password.join("").substring(0, len) 
+}
+
+
+// run generator on clicking icon
+generateIcon.addEventListener("click", genPassFinal)
+
+// run generator on clicking button
+generateBtn.addEventListener("click", genPassFinal)
+
+// run generator on page load
+window.addEventListener("load", genPassFinal)
+
+// run generator on enter
+window.addEventListener("keydown", (e) => {
+    if(e.key === 'Enter') genPassFinal()
+})

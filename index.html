@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/style.css">
     <title>Document</title>
@@ -18,29 +19,29 @@
                     <span class="copied" id="copied">copied</span>
                     <span class="copy-icon"><i class="far fa-copy"></i></span>
                     <span class="generate-icon"><i class="fas fa-sync-alt"></i></span>
-                    <p contenteditable="true" class="password-output" id="passwordOutput">Aaskldohfoi907987f6ejg</p>
+                    <p contenteditable="true" class="password-output" id="passwordOutput"></p>
                 </div>
             </div>
             <div class="settings">
                 <div class="length">
-                    <input type="range" id="rangeSlider" min="6" max="32" autocomplete="off" value="6">
-                    <span title="length of password" id="rangInput" class="range-input">6</span>
+                    <input type="range" id="rangeSlider" min="6" max="32" autocomplete="off" value="8">
+                    <span title="length of password" id="rangInput" class="range-input">8</span>
                 </div>
                 <div class="checkbox">
-                    <input type="checkbox" id="addNumbers">
+                    <input type="checkbox" id="addLowercase" checked>
+                    <label for="addLowercase">Lower case</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="addUppercase" checked>
+                    <label for="addUppercase">Upper case</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="addNumbers" checked>
                     <label for="addNumbers">Numbers</label>
                 </div>
                 <div class="checkbox">
-                    <input type="checkbox" id="addSymbols">
+                    <input type="checkbox" id="addSymbols" checked>
                     <label for="addSymbols">Symbols</label>
-                </div>
-                <div class="checkbox">
-                    <input type="checkbox" id="addUppercase">
-                    <label for="addUppercase">Uppercase</label>
-                </div>
-                <div class="checkbox">
-                    <input type="checkbox" id="addLowercase">
-                    <label for="addLowercase">Lowercase</label>
                 </div>
             </div>
             <div class="generate-button">
