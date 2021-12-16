@@ -18,7 +18,7 @@ window.addEventListener('input', () => {
 
 // play copy sound and show copied
 copyIcon.addEventListener('click', () => {
-    if(passwordOutput.innerHTML.trim() === "") return;
+    if (passwordOutput.innerHTML.trim() === "") return;
 
     copied.classList.add('active')
     // remove class after 1sec
@@ -31,31 +31,31 @@ copyIcon.addEventListener('click', () => {
 })
 
 // crypto random number generator
-function cryptoRandomNum(){
+function cryptoRandomNum() {
     return self.crypto.getRandomValues(new Uint32Array(1))[0] / (Math.pow(2, 32) - 1)
 }
 
 // functions that return single lowercase, uppercase, number and symbol
 class Random {
-    static lower(){
+    static lower() {
         return String.fromCharCode(Math.floor(cryptoRandomNum() * 26) + 97)
     }
 
-    static upper(){
+    static upper() {
         return String.fromCharCode(Math.floor(cryptoRandomNum() * 26) + 65)
     }
 
-    static numbers(){
+    static numbers() {
         return String.fromCharCode(Math.floor(cryptoRandomNum() * 10) + 48)
     }
 
-    static symbols(){
+    static symbols() {
         const chars = "!@#$%^&*()_+-={}?.,<>:;'`"
         return chars[Math.floor(cryptoRandomNum() * chars.length)]
     }
 }
 
-function genPassFinal(){
+function genPassFinal() {
     const passwordLength = rangeSlider.value;
     const lower = addLowercase.checked;
     const upper = addUppercase.checked;
@@ -67,31 +67,32 @@ function genPassFinal(){
 
 // Fisher-Yates array shuffle algorithm
 function shuffleArray(arr) {
-    let currentIndex = arr.length,  randomIndex;
+    let currentIndex = arr.length,
+        randomIndex;
 
-  // While there remain elements to shuffle...
-  while (currentIndex != 0) {
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
 
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
 
-    // And swap it with the current element.
-    [arr[currentIndex], arr[randomIndex]] = [arr[randomIndex], arr[currentIndex]];
-  }
+        // And swap it with the current element.
+        [arr[currentIndex], arr[randomIndex]] = [arr[randomIndex], arr[currentIndex]];
+    }
 
-  return arr;
+    return arr;
 }
 
 // main function that generates password
 function generatePassword(len, lower, upper, symbols, numbers) {
-    
+
     let password = []
 
     //check what checkboxes are true and get them in an array
     let types = [{lower}, {upper}, {symbols}, {numbers}].filter(val => Object.values(val)[0])
 
-    for(let i = 0; i < len; i++) {
+    for (let i = 0; i < len; i++) {
         types.forEach(key => {
             let func = Object.keys(key)[0]
             password.push(Random[func]())
@@ -101,7 +102,7 @@ function generatePassword(len, lower, upper, symbols, numbers) {
     shuffleArray(password)
 
     //let startCut = Math.floor(cryptoRandomNum() * (password.length - len))
-    return password.join("").substring(0, len) 
+    return password.join("").substring(0, len)
 }
 
 
@@ -116,5 +117,5 @@ window.addEventListener("load", genPassFinal)
 
 // run generator on enter
 window.addEventListener("keydown", (e) => {
-    if(e.key === 'Enter') genPassFinal()
+    if (e.key === 'Enter') genPassFinal()
 })
