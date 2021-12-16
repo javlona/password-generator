@@ -16,7 +16,7 @@ window.addEventListener('input', () => {
     rangInput.innerHTML = rangeSlider.value
 })
 
-// play copy sound and show copied
+// copy password to the clipboard with the sound and show "copied" text
 copyIcon.addEventListener('click', () => {
     if (passwordOutput.innerHTML.trim() === "") return;
 
@@ -26,7 +26,10 @@ copyIcon.addEventListener('click', () => {
         copied.classList.remove('active')
     }, 1000)
 
+    // copy password to the clipboard
     navigator.clipboard.writeText(passwordOutput.innerText)
+    
+    // play sound
     copiedSound.play()
 })
 
@@ -55,13 +58,28 @@ class Random {
     }
 }
 
+// at least on checkbox must be checked
+function checkboxState() {
+    let checked = [addNumbers, addSymbols, addLowercase, addUppercase].filter(elem => elem.checked)
+    checked.forEach(elem => {
+        
+        (checked.length === 1) ? elem.disabled = true : elem.disabled = false
+    })
+}
+
+// disable if only on checkbox left
+[addNumbers, addSymbols, addLowercase, addUppercase].forEach(e => {
+    e.addEventListener('click', checkboxState)
+})
+
+// get state of checkboxes and run generator
 function genPassFinal() {
     const passwordLength = rangeSlider.value;
     const lower = addLowercase.checked;
     const upper = addUppercase.checked;
     const symbols = addSymbols.checked;
     const numbers = addNumbers.checked;
-    //console.log(passwordLength, lower, upper, symbols, numbers);
+
     passwordOutput.innerHTML = generatePassword(passwordLength, lower, upper, symbols, numbers)
 }
 
@@ -105,17 +123,15 @@ function generatePassword(len, lower, upper, symbols, numbers) {
     return password.join("").substring(0, len)
 }
 
-
-// run generator on clicking icon
-generateIcon.addEventListener("click", genPassFinal)
-
-// run generator on clicking button
-generateBtn.addEventListener("click", genPassFinal)
-
-// run generator on page load
-window.addEventListener("load", genPassFinal)
+// run generator on icon and button
+[generateBtn, generateIcon].forEach(e => {
+    e.addEventListener('click', genPassFinal)
+})
 
 // run generator on enter
 window.addEventListener("keydown", (e) => {
     if (e.key === 'Enter') genPassFinal()
 })
+
+// run generator on page load
+window.addEventListener("load", genPassFinal)
