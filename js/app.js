@@ -119,7 +119,6 @@ function generatePassword(len, lower, upper, symbols, numbers) {
 
     shuffleArray(password)
 
-    //let startCut = Math.floor(cryptoRandomNum() * (password.length - len))
     return password.join("").substring(0, len)
 }
 

@@ -15,6 +15,15 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 .flex {
     display: flex;
     justify-content: center;
@@ -26,6 +35,10 @@ body {
     max-width: 1200px;
     height: 100vh;
     margin: 0 auto;
+}
+
+.container.flex {
+    flex-direction: column;
 }
 
 .app {
@@ -181,4 +194,8 @@ body {
 
 .generate-button button:active {
     transform: translateY(1px);
+}
+
+.credits {
+    color: rgba(167, 167, 167, 0.198);
 }
