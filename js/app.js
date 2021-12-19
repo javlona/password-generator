@@ -80,7 +80,7 @@ function genPassFinal() {
     const symbols = addSymbols.checked;
     const numbers = addNumbers.checked;
 
-    passwordOutput.innerHTML = generatePassword(passwordLength, lower, upper, symbols, numbers)
+    passwordOutput.innerText = generatePassword(passwordLength, lower, upper, symbols, numbers)
 }
 
 // Fisher-Yates array shuffle algorithm
