@@ -53,7 +53,7 @@ class Random {
     }
 
     static symbols() {
-        const chars = "!@#$%^&*()_+-={}?.,~|>:;'`["
+        const chars = "!@#$%^&*()_+-={}?.,~|>:;'`[><"
         return chars[Math.floor(cryptoRandomNum() * chars.length)]
     }
 }
