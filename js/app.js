@@ -18,7 +18,7 @@ window.addEventListener('input', () => {
 
 // copy password to the clipboard with the sound and show "copied" text
 copyIcon.addEventListener('click', () => {
-    if (passwordOutput.innerHTML.trim() === "") return;
+    if (passwordOutput.innerText.trim() === "") return;
 
     copied.classList.add('active')
     // remove class after 1sec
@@ -62,7 +62,6 @@ class Random {
 function checkboxState() {
     let checked = [addNumbers, addSymbols, addLowercase, addUppercase].filter(elem => elem.checked)
     checked.forEach(elem => {
-        
         (checked.length === 1) ? elem.disabled = true : elem.disabled = false
     })
 }
@@ -104,7 +103,6 @@ function shuffleArray(arr) {
 
 // main function that generates password
 function generatePassword(len, lower, upper, symbols, numbers) {
-
     let password = []
 
     //check what checkboxes are true and get them in an array
@@ -116,9 +114,7 @@ function generatePassword(len, lower, upper, symbols, numbers) {
             password.push(Random[func]())
         })
     }
-
     shuffleArray(password)
-
     return password.join("").substring(0, len)
 }
 
