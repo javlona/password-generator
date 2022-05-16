@@ -64,8 +64,9 @@ function checkboxState() {
     checked.forEach(elem => {
         (checked.length === 1) ? elem.disabled = true : elem.disabled = false
     })
+    console.log(checked)
 }
-console.log(checkboxState())
+
 // disable if only one checkbox left
 [addNumbers, addSymbols, addLowercase, addUppercase].forEach(e => {
     e.addEventListener('click', checkboxState)
