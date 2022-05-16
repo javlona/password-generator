@@ -65,8 +65,8 @@ function checkboxState() {
         (checked.length === 1) ? elem.disabled = true : elem.disabled = false
     })
 }
-
-// disable if only on checkbox left
+console.log(checkboxState())
+// disable if only one checkbox left
 [addNumbers, addSymbols, addLowercase, addUppercase].forEach(e => {
     e.addEventListener('click', checkboxState)
 })
